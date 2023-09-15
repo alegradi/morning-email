@@ -24,6 +24,8 @@ currency = (f"\n100 GBP will get you: "
 
 email_msg = f"Subject:" + subject + welcome + joke + quote + currency
 
+# print(email_msg)  # Debug info
+
 with smtplib.SMTP("smtp.gmail.com") as connection:
     connection.starttls()
     connection.login(user=sender_email, password=sender_pass)
