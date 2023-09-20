@@ -1,6 +1,9 @@
 # Morning - Mail
 
-A simple Python app to email a target with every morning with some useful info.
+A simple Python app based on the code from the `100 Days of Code: The Complete Python Pro Bootcamp for 2023` by Dr. Angela Yu. 
+Link - https://www.udemy.com/course/100-days-of-code/
+
+Send email to a target every morning with some useful info.
 
 Currently uses:
 - Zenquotes - https://zenquotes.io
