@@ -8,6 +8,7 @@ from currency_convert import CurrencyConvert
 sender_email = os.environ["SENDER_EMAIL"]
 sender_pass = os.environ["SENDER_PASS"]
 target_email = os.environ["TARGET_EMAIL"]
+exchange_api = os.environ["EXCHANGE_BEARER"]
 
 dadjoke = DadJoke()
 daily_quote = DailyQuote()
@@ -25,6 +26,8 @@ currency = (f"\n100 GBP will get you: "
 email_msg = f"Subject:" + subject + welcome + joke + quote + currency
 
 # print(email_msg)  # Debug info
+
+print(email_msg)
 
 with smtplib.SMTP("smtp.gmail.com") as connection:
     connection.starttls()
