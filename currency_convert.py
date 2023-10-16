@@ -9,7 +9,7 @@ class CurrencyConvert:
         self.gbp_to_huf = ""
         self.gbp_to_jpy = ""
         self.gbp_to_usd = ""
-        self.convert_url = " https://v6.exchangerate-api.com/v6/latest/GBP"
+        self.convert_url = "https://v6.exchangerate-api.com/v6/latest/GBP"
         self.convert_currency()
 
     def convert_currency(self):
