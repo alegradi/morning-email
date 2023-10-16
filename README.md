@@ -8,7 +8,7 @@ Send email to a target every morning with some useful info.
 Currently uses:
 - Zenquotes - https://zenquotes.io
 - Dad Jokes - https://icanhazdadjoke.com
-- Currency Exchange rates - https://api.exchangerate.host
+- Currency Exchange rates - https://exchangerate-api.com
 
 ## How to use
 
@@ -17,7 +17,9 @@ Currently uses:
 git clone https://github.com/alegradi/morning-email.git
 ```
 
-2. Set up a cronjob
+2. Get a free API key from exchangerate-api.com
+
+3. Set up a cronjob
 
 The below example is to have this run at 07:00 every weekday.
 ```commandline
@@ -28,7 +30,8 @@ Specify the variables, they are self-explanatory:
 ```commandline
 SENDER_EMAIL = "Where you are sending from"
 SENDER_PASS = "API key to access sending email account"
-TARGET_EMAIL= "Where you want to send to"
+TARGET_EMAIL = "Where you want to send to"
+EXCHANGE_BEARER = "API key to be used with exchangerate-api.com"
 ```
 
-3. Enjoy
+4. Enjoy
