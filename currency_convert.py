@@ -4,6 +4,13 @@ import os
 EXCHANGE_BEARER = os.environ["EXCHANGE_BEARER"]
 EXCHANGE_HEADERS = {"Authorization": f"Bearer {EXCHANGE_BEARER}"}
 
+
+def pretty_currency(input):
+    hundred_units = '{0:.2f}'.format(100 * input)
+    formatted_result = '{:,}'.format(float(hundred_units))
+    return formatted_result
+
+
 class CurrencyConvert:
     def __init__(self):
         self.gbp_to_huf = ""
@@ -18,11 +25,6 @@ class CurrencyConvert:
         # print(response.json())  # Debug info
         response_json = response.json()
 
-        gbp_to_huf = float(response_json["conversion_rates"]["HUF"])
-        self.gbp_to_huf = "{:,}".format('{0:.2f}'.format(100 * gbp_to_huf))
-
-        gbp_to_jpy = float(response_json["conversion_rates"]["JPY"])
-        self.gbp_to_jpy = "{:,}".format('{0:.2f}'.format(100 * gbp_to_jpy))
-
-        gbp_to_usd = float(response_json["conversion_rates"]["USD"])
-        self.gbp_to_usd = "{:,}".format('{0:.2f}'.format(100 * gbp_to_usd))
+        self.gbp_to_huf = pretty_currency(float(response_json["conversion_rates"]["HUF"]))
+        self.gbp_to_jpy = pretty_currency(float(response_json["conversion_rates"]["JPY"]))
+        self.gbp_to_usd = pretty_currency(float(response_json["conversion_rates"]["USD"]))
