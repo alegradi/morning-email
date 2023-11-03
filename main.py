@@ -1,14 +1,7 @@
-import smtplib
-import os
 from dadjoke import DadJoke
 from motivational import DailyQuote
 from currency_convert import CurrencyConvert
-
-# Secrets
-sender_email = os.environ["SENDER_EMAIL"]
-sender_pass = os.environ["SENDER_PASS"]
-target_email = os.environ["TARGET_EMAIL"]
-exchange_api = os.environ["EXCHANGE_BEARER"]
+from smtp_handler import SendEmail
 
 dadjoke = DadJoke()
 daily_quote = DailyQuote()
@@ -24,15 +17,7 @@ currency = (f"\n100 GBP will get you: "
       f"\n- {currency_rates.gbp_to_usd} USD")
 
 email_msg = f"Subject:" + subject + welcome + joke + quote + currency
+print(email_msg)  # Debug info
 
-# print(email_msg)  # Debug info
-
-print(email_msg)
-
-with smtplib.SMTP("smtp.gmail.com") as connection:
-    connection.starttls()
-    connection.login(user=sender_email, password=sender_pass)
-    connection.sendmail(from_addr=sender_email,
-                        to_addrs=target_email,
-                        msg=email_msg
-                        )
+send_email = SendEmail()
+send_email.send_mail(email_body=email_msg)
