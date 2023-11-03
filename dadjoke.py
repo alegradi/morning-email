@@ -12,4 +12,11 @@ class DadJoke:
         response = requests.get(url=self.icanhazdadjoke_url, headers=self.headers)
         response.raise_for_status()
         response_json = response.json()
-        self.joke = response_json["joke"]
+
+        # If the joke has formatting incompatible with ascii, we request a new one
+        try:
+            response_json["joke"].encode("ascii")
+        except UnicodeEncodeError:
+            self.request_joke()
+        else:
+            self.joke = response_json["joke"]
